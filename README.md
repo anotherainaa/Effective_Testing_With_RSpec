@@ -1,2 +1,3 @@
 # Effective_Testing_With_RSpec
-Repository for developing project provided in the book Effective Testing with RSpec 3
+
+Repository for testing code and keeping notes about the book Effective Testing with RSpec 3
