@@ -64,10 +64,25 @@ end
 ### How do you negate your expectation? 
 - Use `not_to` instead of `to` e.g `expect(toppings).not_to be_empty`
 
+### What are the 3 different techniques shared in the book for sharing setup? 
+- hook - specifically `before` hook which can be combined with instance variables
+- helper method + memoization - we can use local variables instead of instance variables, but we need to make sure that the helper method does not return a new instance each time which is where memoization helps. 
+- let - RSpec's specific method that handles the edge case that can happen with memoization.
+
 ### Why do we need to use memoization if we use helper methods to help with setup? 
+- To ensure that we're not calling the helper method each and getting a new instance every single time. Which would then fail the test.
 
 ### What is the downside of using the `||=` pattern?
-- It won't work if we're trying to store something falsey.
+- It doesn' work the way we imagine it to be and will potentially run code unefficiently if we're trying to store something falsey in the variable. 
+- Take the code below, the intention is to store `nil` value for `@current_toaster` if it isn't found,but what actually really happens is that, storing falsey values means the code on the right side will always be executed - which means memoization is not happening.
+- RSpec handles this using `let` 
+
+```ruby
+def current_toaster
+  @current_toaster = nil ||= Toaster.find_by_serial('HHGG42')
+end
+```
+
 
 ### What is RSpec's way of handling the problem mentioned above? 
 - Sharing objects with `let`.
