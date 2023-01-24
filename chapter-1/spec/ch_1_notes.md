@@ -75,7 +75,6 @@ end
 ### What is the downside of using the `||=` pattern?
 - It doesn' work the way we imagine it to be and will potentially run code unefficiently if we're trying to store something falsey in the variable. 
 - Take the code below, the intention is to store `nil` value for `@current_toaster` if it isn't found,but what actually really happens is that, storing falsey values means the code on the right side will always be executed - which means memoization is not happening.
-- RSpec handles this using `let` 
 
 ```ruby
 def current_toaster
