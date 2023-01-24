@@ -52,7 +52,21 @@
 ### How do you run examples by name?
 - `rspec -e milk -fd`
 - `rspec --example milk -fd`
-- How does it work - RSpec searhed the full description of each example, searches are case-sensitive
+- How does it work - RSpec searhed the full description of each example, searches are case-sensitive`
+
+### How to run a specific single example e.g the last failure?
+- Use the link provided in failed examples e.g `rspec ./spec/coffee_spec.rb:25`
+- `rspec` following by file name and line of example to run.
+
+### RSpec plugin for VSCode? 
+??
+
+### How do you re-run everything that failed?
+- `rspec --only-failures`
+- must set some configuration as per RSpec's instruction
+
+
+
 
 
 
