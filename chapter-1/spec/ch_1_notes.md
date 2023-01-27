@@ -98,3 +98,31 @@ end
 
 
 2. Run rspec --help and look at the available options. Try using a few of them to run your sandwich examples.
+
+
+---
+
+## Brandon Video Notes
+
+```ruby
+RSpec.describe 'something' do
+  # describe == context (a certain context around something)
+  describe 'some property of that something' do 
+  end
+end
+
+def describe(text, &block)
+  puts text
+  block.call
+end
+
+describe('something') { 1 }
+```
+
+- Example group
+- A certain grammar in RSpec 
+  - arrange
+  - test
+  - expectations
+
+- Struct useful for classes without much behavior
