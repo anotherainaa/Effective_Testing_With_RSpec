@@ -11,4 +11,7 @@
 
 #### What will we be testing? 
 - Acceptance test - testing the entire app from the outermost layer, HTTP request/response cycle
-- 
+
+
+#### Keywords
+- sliming the test
