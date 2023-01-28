@@ -125,4 +125,22 @@ describe('something') { 1 }
   - test
   - expectations
 
-- Struct useful for classes without much behavior
+- `struct` useful for classes without much behavior
+- `xit` to prevent examples from running?
+
+Code is so dry so brittle that you have to jump around files to understand what things are doing
+- be careful how much extractions you do 
+- confidence
+  - edge cases 
+  - handle the cases 
+
+- elminating fear
+  - test as much as possible
+  - get coverage
+  - refactoring
+  - design and sustainability
+
+- test too much than too little
+  - writing the code is easy, writing the test is harder
+
+- 60 to 70 percent is spent writing tests
