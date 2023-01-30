@@ -92,6 +92,9 @@ end
 ### When should we use `let` etc? 
 - Use them where the improve maintainability, lessen noise and increase clarity.
 
+__`let!`__
+- Runs before `before` block.
+
 ## Exercises
 
 1. We’ve shown you three primary ways to reduce duplication in RSpec: hooks, helper methods, and let declarations. Which way did you like best for this example? Why? Can you think of situations where the others might be a better option?
@@ -102,11 +105,14 @@ end
 
 ---
 
-## Brandon Video Notes
+## Some notes from watching Brandon Weaver's video.
+
+- Brandon briefly explains that the describe method probably just look something like the code below. 
+- a method that takes a block as an argument and executes the block and does something with it.
 
 ```ruby
 RSpec.describe 'something' do
-  # describe == context (a certain context around something)
+  # describe is a context (a certain context around something)
   describe 'some property of that something' do 
   end
 end
@@ -125,14 +131,52 @@ describe('something') { 1 }
   - test
   - expectations
 
+#### Struct
 - `struct` useful for classes without much behavior
-- `xit` to prevent examples from running?
+- From documentation: 
+  - A Struct is a convenient way to bundle a number of attributes together, using accessor methods, without having to write an explicit class.
 
-Code is so dry so brittle that you have to jump around files to understand what things are doing
-- be careful how much extractions you do 
-- confidence
-  - edge cases 
-  - handle the cases 
+```ruby
+Customer = Struct.new(:name, :address) do
+  def greeting
+    "Hello #{name}!"
+  end
+end
+
+dave = Customer.new("Dave", "123 Main")
+dave.name     # => "Dave!"
+dave.greeting # => "Hello Dave!"
+```
+
+
+
+#### Chapter 2
+- Brandon used `xit` in front of the sleep examples to prevent it from running after first run. 
+- From documentations - Temporarily skip by prefixing `it`, `specify`, or `example` with an `x`
+- Some code examples: 
+
+```ruby
+RSpec.describe "an example" do
+  xit "is skipped using xit" do
+  end
+
+  xspecify "is skipped using xspecify" do
+  end
+
+  xexample "is skipped using xexample" do
+  end
+end
+```
+
+#### Chapter 3 
+
+Some notes about what Brandon says about this chapter:
+
+- Code is so dry so brittle that you have to jump around files to understand what things are doing
+  - be careful how much extractions you do 
+  - confidence
+    - edge cases 
+    - handle the cases 
 
 - elminating fear
   - test as much as possible
