@@ -82,7 +82,6 @@ def current_toaster
 end
 ```
 
-
 ### What is RSpec's way of handling the problem mentioned above? 
 - Sharing objects with `let`.
 
@@ -93,12 +92,37 @@ end
 - Use them where the improve maintainability, lessen noise and increase clarity.
 
 __`let!`__
-- Runs before `before` block.
+- define a memoized helper method that is called in a `before` block
+  - the key point here is that the memoized helper method is called in a `before` block, unlike `let` that waits until the block is executed and the helper method to be called to be executed.
+- example from documentation
+```ruby
+$count = 0
+RSpec.describe "let!" do
+  invocation_order = []
+
+  let!(:count) do
+    invocation_order << :let!
+    $count += 1
+  end
+
+  it "calls the helper method in a before hook" do
+    invocation_order << :example
+    expect(invation_order).to eq([:let!, :example])
+    expect(count).to eq(1)
+  end
+end
+```
+
 
 ## Exercises
 
 1. We’ve shown you three primary ways to reduce duplication in RSpec: hooks, helper methods, and let declarations. Which way did you like best for this example? Why? Can you think of situations where the others might be a better option?
 
+- Helper method + memoization - I don't really see why anyone would use this over `let` if `let` is much more powerful than this method. I would imagine it's better to use helper methods like a reusable helper method (but maybe takes in arguments as inputs)
+- Personally, I like how how much easier it is to spot the instance variables visually. This can be useful if the test cases isn't cluttered with a lot of instance variables. But the possibility of an instance variable leaking from one file to another and causing issues sounds like a nightmare to debug.
+- `let` and `let!`
+  - lazy loading vs making the control flow more obvious? 
+  - Ref: https://relishapp.com/rspec/rspec-core/v/3-12/docs/helper-methods/let-and-let
 
 2. Run rspec --help and look at the available options. Try using a few of them to run your sandwich examples.
 
@@ -148,11 +172,16 @@ dave.name     # => "Dave!"
 dave.greeting # => "Hello Dave!"
 ```
 
+- Other things to note when using struct (https://www.rubyguides.com/2017/06/ruby-struct-and-openstruct/)
+  - they won't enforce the correct number of arguments for the constructor
+  - There will be an anonymous class addedd to `ancestors` of structs. 
+  - Note that it inherits from `Enumerable` module which allows us to call methods like `each` and `map`.
 
 
 #### Chapter 2
 - Brandon used `xit` in front of the sleep examples to prevent it from running after first run. 
 - From documentations - Temporarily skip by prefixing `it`, `specify`, or `example` with an `x`
+- We can also use `skip` to skip examples
 - Some code examples: 
 
 ```ruby
@@ -164,6 +193,17 @@ RSpec.describe "an example" do
   end
 
   xexample "is skipped using xexample" do
+  end
+end
+
+RSpec.describe "an example" do
+  skip "is skipped" do
+  end
+end
+
+RSpec.describe "an example" do
+  it "is skipped" do
+    skip
   end
 end
 ```
