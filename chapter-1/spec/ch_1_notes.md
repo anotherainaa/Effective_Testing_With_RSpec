@@ -154,6 +154,7 @@ describe('something') { 1 }
   - arrange
   - test
   - expectations
+- Note: Good to know for reading documentation. `describe` is an alias for `example_group`
 
 #### Struct
 - `struct` useful for classes without much behavior
