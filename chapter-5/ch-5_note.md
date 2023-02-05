@@ -75,7 +75,10 @@ What did I learn
 - how to TDD
 - we're creating a double on ledger, which is a dependency injection on ???? 
   - we give this ledger as a default value to app (the ledger respresents a record of the expenses)
-  - writing a double because we want to movk the behaviour without the dependency?()
+  - writing a double because we want to mock the behaviour without the dependency?()
 
-
+---
+Feb 5th notes
+What does `allow` do? 
+What does `receive` do? 
 
