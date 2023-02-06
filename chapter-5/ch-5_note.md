@@ -79,6 +79,13 @@ What did I learn
 
 ---
 Feb 5th notes
-What does `allow` do? 
-What does `receive` do? 
+- What does `allow` do? 
+- What does `receive` do? 
+- `arrange`, `act`, `assert`
+- verifying doubles - fragile mocks, a problem where specs pass when they should be failing
+  - test double mimic the interface of a real object
 
+
+---
+Feb 6th notes
+- Chapter 6 - setting up databases
