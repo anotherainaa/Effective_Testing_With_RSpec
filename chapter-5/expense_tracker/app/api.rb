@@ -13,7 +13,7 @@ module ExpenseTracker
       expense = JSON.parse(request.body.read)
       result = @ledger.record(expense)
       
-      if result.success? 
+      if result.success?
         JSON.generate('expense_id' => result.expense_id)
       else
         status 422
@@ -22,7 +22,7 @@ module ExpenseTracker
     end
 
     get '/expenses/:date' do
-      JSON.generate([])
+      JSON.generate(@ledger.expenses_on(params[:date]))
     end
   end
 end

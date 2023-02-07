@@ -21,23 +21,23 @@ module ExpenseTracker
 
     it 'records submitted expenses' do 
       pending 'Need to presist expenses'
-      coffee = {
+      coffee = post_expense(
         'payee' => 'Starbucks',
         'amount' => 5.75,
         'date' => '2017-06-10'
-      }
+      )
 
-      zoo = {
+      zoo = post_expense(
         'payee' => 'Zoo',
         'amount' => 15.25,
         'date' => '2017-06-10'
-      }
+      )
 
-      zoo = {
+      groceries = post_expense(
         'payee' => 'Whole Foods',
         'amount' => 95.20,
         'date' => '2017-06-11'
-      }
+      )
 
       get '/expenses/2017-06-10'
       expect(last_response.status).to eq(200)
