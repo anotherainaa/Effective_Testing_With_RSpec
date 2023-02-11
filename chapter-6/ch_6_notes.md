@@ -20,5 +20,13 @@
   - tradeoff - spec that touches the database is going to be ALOT slower, particularly in its setup and teardown steps
   - following "one expectation per example" too rigorously means setting up and tearing gown many times (which will take a lot of time)
 - by default, RSpec aborts the test on the first failure
-
-
+- test interaction - when interacting with external resource - we need to make sure we restore the system to a clean slate after each spec
+- rspec `around` hook vs rspec before suite hook
+  - for each example marked as requering th database (via the `:db` tag) these events happen: 
+    1. RSpec calls our `around` hook, passing it the example we're running
+    1. inside the hook, we tell Sequel to start a new database transaction
+    1. Sequel calls the inner block, in which we tell RSpec to run the example
+    1. The body of the example finshes running
+    1. Sequel rolls back the transaction, wiping out any changes we made to the database
+    1. the `around` hook finished, and RSpec moves on the the next example.
+- the notion of tagging. tagging an example with `:db` to indicate that the example requires the use of DB, a tag is a piece of metadata

@@ -101,4 +101,8 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
   config.order = :random
+
+  config.when_first_matching_example_defined(:db) do
+    require_relative 'support/db'
+  end
 end
