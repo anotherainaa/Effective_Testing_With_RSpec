@@ -88,4 +88,20 @@ Feb 5th notes
 
 ---
 Feb 6th notes
-- Chapter 6 - setting up databases
+
+Fill in the body of each example one by one. You’ll need to consider the following questions: 
+- What test doubles or other objects will you need to set up? 
+- What will the expected JSON look like when there are expenses recorded on the given date?
+
+- What underlying data will your test doubles need to supply in order for you to return the correct JSON? 
+- How do the answers to the two previous questions change when there are no expenses in the ledger for that date?
+
+#### Documentation
+
+- `instance_double` -  It takes a class name or
+object as its first argument, then verifies that any methods being stubbed would be present
+on an instance of that class.
+
+- 
+
+## Chapter 6 - setting up databases
