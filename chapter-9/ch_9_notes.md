@@ -92,6 +92,13 @@ Using a Custom Formatter
 #### Precedence order for settings? 
 - Local options will override global ones.
 
+#### How formatters work? 
+- Register itself with RSpec to receive specific notifications
+- Initialize itself at the beginning of the RSpec run
+- React to events as they occur
+
+
+
 
 
 
