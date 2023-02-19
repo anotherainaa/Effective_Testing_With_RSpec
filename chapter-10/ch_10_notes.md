@@ -11,6 +11,15 @@
 - expectation vs assertion
   - readibility  
 
+Description readbility and `subject` shortcuts?
+- why do we have this? - because RSpec has it's own descriptions, if the description of RSpec is sufficient such that the description in `it` would be identical, we can use RSpec's descriptions.
+- caveat? - it can be very difficult to understand, therefore use only when sure that the description would be identical, this is to stop test cases from being brittle and not understandable when tests changes.
+
+- When do we want to write our own failure message? 
+  - when the in built matchers don't give us enough detail.
+  - in the examples, they used http api errors could be a good place where we may want to show what is in the body etc
+- Other examples toucher are `stdout` tests
+
 ### Question
 
 #### What are the three components of an expectation? 
