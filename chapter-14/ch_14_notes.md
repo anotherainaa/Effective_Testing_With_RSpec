@@ -183,3 +183,5 @@ expect(greeter).to receive(:goodbye).ordered
 ```
 
 - a sign that specs may be too coupled to one particular implementation
+
+
